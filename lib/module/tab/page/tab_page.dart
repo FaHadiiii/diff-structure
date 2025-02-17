@@ -13,9 +13,12 @@ class TabPage extends StatelessWidget {
 
         return tabs.isNotEmpty
             ? Scaffold(
-                body: IndexedStack(
-                  index: controller.selectedIndex,
-                  children: tabs.map((item) => item.page).toList(),
+                body: PopScope(
+                  canPop: false,
+                  child: IndexedStack(
+                    index: controller.selectedIndex,
+                    children: tabs.map((item) => item.page).toList(),
+                  ),
                 ),
                 bottomNavigationBar: BottomNavigationBar(
                   items: tabs.map((item) {
